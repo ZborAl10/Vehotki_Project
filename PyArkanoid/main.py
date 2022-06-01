@@ -36,8 +36,8 @@ blocks = [block.Block(DISTANCE_BETWEEN_BLOCKS + 22 + i * (DISTANCE_BETWEEN_BLOCK
           for i in range(10) for j in range(4)]
 #blocks = [block.Block(600, 350), block.Block(100, 250), block.Block(600, 200)]
 # стены
-walls = [wall.HorizontalWall(-10, 0, 0, 0, 0, HEIGHT),
-         wall.HorizontalWall(WIDTH, 0, WIDTH + 10, 0, WIDTH + 10, HEIGHT),
+walls = [wall.HorizontalWall(-50, 0, 0, 0, 0, HEIGHT),
+         wall.HorizontalWall(WIDTH, 0, WIDTH + 50, 0, WIDTH + 50, HEIGHT),
          wall.VerticalWall(0, -10, 0, 0, WIDTH, 0)]
 # объединяем все объекты, от которых будет отскакивать шар, в один список
 entities = blocks + walls + bat_list
@@ -51,11 +51,11 @@ while run:
             
 
     keys = pygame.key.get_pressed()    # создаем список нажатых в данный момент клавиш
-    if keys[pygame.K_d]:               # если нажали клавишу D,
+    if keys[pygame.K_d] or keys[pygame.K_RIGHT]:               # если нажали клавишу D,
         bat.rect.x += 20               # платформа движется вправо
         if ball.on_bat:
             ball.rect.x += 20
-    if keys[pygame.K_a]:               # если же нажали клавишу A,
+    if keys[pygame.K_a] or keys[pygame.K_LEFT]:               # если же нажали клавишу A,
          bat.rect.x -= 20              # платформа движется влево
          if ball.on_bat:
             ball.rect.x -= 20

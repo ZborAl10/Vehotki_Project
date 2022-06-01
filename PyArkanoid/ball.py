@@ -25,6 +25,8 @@ class Ball():
         
         self.on_bat = True
 
+        self.health = 3
+
     def update(self):
         if not self.on_bat:
             self.rect.move_ip(self.horizontal_velocity, self.vertical_velocity)
