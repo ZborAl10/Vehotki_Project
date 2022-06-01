@@ -7,8 +7,8 @@ IMAGE_HEIGHT = 15
 RECT_WIDTH = int(IMAGE_WIDTH / math.sqrt(2))
 RECT_HEIGHT = int(IMAGE_HEIGHT / math.sqrt(2))
 
-x = 400
-y = 400
+x = 400 - 7
+y = 700 - 30
 
 IMAGE_NAME = 'ball.png'
 
@@ -17,11 +17,20 @@ class Ball():
         self.rect = pygame.Rect((x, y), (IMAGE_WIDTH, IMAGE_HEIGHT))
         self.image = pygame.image.load(IMAGE_NAME)
 
+        #self.horizontal_velocity = 1
+        #self.vertical_velocity = -4
+
         self.horizontal_velocity = 1
         self.vertical_velocity = -4
+        
+        self.on_bat = True
 
     def update(self):
-        self.rect.move_ip(self.horizontal_velocity, self.vertical_velocity)
+        if not self.on_bat:
+            self.rect.move_ip(self.horizontal_velocity, self.vertical_velocity)
+        
+            
+
         
     def horizontal_collide(self, entity):
         L1 = any([abs(self.rect.left - entity.rect.right) <= abs(self.horizontal_velocity) - 1, abs(self.rect.right - entity.rect.left) <= abs(self.horizontal_velocity) - 1])
